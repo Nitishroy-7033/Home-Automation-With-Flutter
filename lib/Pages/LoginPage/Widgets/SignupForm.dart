@@ -10,10 +10,7 @@ class SignupForm extends StatelessWidget {
       children: [
         TextFormField(
           decoration: const InputDecoration(
-              prefixIcon: Icon(
-                Icons.person,
-              ),
-              hintText: "Name"),
+              prefixIcon: Icon(Icons.person), hintText: "Name"),
         ),
         SizedBox(height: 20),
         TextFormField(
@@ -28,10 +25,7 @@ class SignupForm extends StatelessWidget {
         ),
         TextFormField(
           decoration: const InputDecoration(
-              prefixIcon: Icon(
-                Icons.password,
-              ),
-              hintText: "Password"),
+              prefixIcon: Icon(Icons.password), hintText: "Password"),
         ),
         SizedBox(
           height: 40,

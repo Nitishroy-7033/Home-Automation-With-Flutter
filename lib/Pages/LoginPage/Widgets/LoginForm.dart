@@ -10,20 +10,14 @@ class LoginForm extends StatelessWidget {
       children: [
         TextFormField(
           decoration: const InputDecoration(
-              prefixIcon: Icon(
-                Icons.alternate_email,
-              ),
-              hintText: "Email"),
+              prefixIcon: Icon(Icons.alternate_email), hintText: "Email"),
         ),
         const SizedBox(
           height: 20,
         ),
         TextFormField(
           decoration: const InputDecoration(
-              prefixIcon: Icon(
-                Icons.password,
-              ),
-              hintText: "Password"),
+              prefixIcon: Icon(Icons.password), hintText: "Password"),
         ),
         SizedBox(
           height: 40,

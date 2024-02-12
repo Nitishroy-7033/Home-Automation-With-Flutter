@@ -8,7 +8,6 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -31,6 +30,7 @@ class LoginPage extends StatelessWidget {
                 children: [
                   Text(
                     "Home Automation",
+                    style: TextStyle(fontSize: 25),
                   ),
                 ],
               ),
