@@ -7,6 +7,9 @@ var lightTheme = ThemeData(
 var darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
+    appBarTheme: AppBarTheme(
+      backgroundColor: dContainerColor,
+    ),
     colorScheme: const ColorScheme.dark(
       background: dBgColor,
       onBackground: dOnBgColor,
@@ -46,6 +49,12 @@ var darkTheme = ThemeData(
         fontSize: 15,
         fontWeight: FontWeight.w400,
         color: dOnBgColor,
+      ),
+      labelLarge: TextStyle(
+        fontFamily: "Poppins",
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: dOnContainer,
       ),
       labelMedium: TextStyle(
         fontFamily: "Poppins",
