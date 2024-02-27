@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/Pages/LoginPage/LoginPage.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class WebAuthPage extends StatelessWidget {
+  const WebAuthPage({super.key});
 
   @override
   Widget build(BuildContext context) {

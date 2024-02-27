@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/Pages/LoginPage/Widgets/LoginForm.dart';
-import 'package:smart_home/Pages/LoginPage/Widgets/SignupForm.dart';
+import 'package:smart_home/Pages/Mobile/LoginPage/Widgets/LoginForm.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class MobileAuthPage extends StatelessWidget {
+  const MobileAuthPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +63,8 @@ class LoginPage extends StatelessWidget {
                           SizedBox(
                             height: 20,
                           ),
-                          // LoginForm(),
-                          SignupForm()
+                          LoginForm(),
+                          // SignupForm()
                         ],
                       ),
                     )

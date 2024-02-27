@@ -7,7 +7,7 @@ var lightTheme = ThemeData(
 var darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    colorScheme: ColorScheme.dark(
+    colorScheme: const ColorScheme.dark(
       background: dBgColor,
       onBackground: dOnBgColor,
       primaryContainer: dContainerColor,
@@ -22,7 +22,7 @@ var darkTheme = ThemeData(
         borderSide: BorderSide.none,
       ),
     ),
-    textTheme: TextTheme(
+    textTheme:const TextTheme(
       bodyLarge: TextStyle(
         fontFamily: "Poppins",
         fontSize: 20,

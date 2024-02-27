@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:smart_home/Conifg/PageRoutes.dart';
 import 'package:smart_home/Conifg/Theme.dart';
-import 'package:smart_home/Pages/HomePage/HomePage.dart';
-import 'package:smart_home/Pages/LoginPage/LoginPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,16 +9,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Smart Home',
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        themeMode: ThemeMode.dark,
-        home: LoginPage());
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Smart Home',
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      getPages: pages,
+      themeMode: ThemeMode.dark,
+      initialRoute: '/auth',
+    );
   }
 }

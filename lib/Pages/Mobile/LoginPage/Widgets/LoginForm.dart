@@ -25,19 +25,22 @@ class LoginForm extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset("assets/icons/wifi.svg"),
-                  SizedBox(width: 10),
-                  Text("CONNECT"),
-                ],
+            InkWell(
+              onTap: () {},
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset("assets/icons/wifi.svg"),
+                    SizedBox(width: 10),
+                    Text("CONNECT"),
+                  ],
+                ),
               ),
             ),
           ],
