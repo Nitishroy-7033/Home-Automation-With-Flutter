@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Components/AddRoom/AddRoom.dart';
 import 'package:smart_home/Components/BottomButton.dart';
+import 'package:smart_home/Controller/RoomController.dart';
 import 'package:smart_home/Pages/Mobile/HomePage/Widgets/AppBar.dart';
 import 'package:smart_home/Pages/Mobile/HomePage/Widgets/RoomCard.dart';
 import 'package:smart_home/Views/Room/RoomView.dart';
@@ -11,6 +12,7 @@ class MobileHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RoomController roomController = Get.put(RoomController());
     return Scaffold(
       floatingActionButton: Bottombutton(
         btnName: "Add room",
@@ -41,48 +43,18 @@ class MobileHomePage extends StatelessWidget {
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
                   crossAxisCount: 2,
-                  children: [
-                    RoomCard(
-                      roomName: "Living room",
-                      deviceCount: "4",
-                      icon: Icons.bed,
-                      onTap: () {
-                        Get.to(RoomView());
-                      },
-                    ),
-                    RoomCard(
-                      roomName: "Study room",
-                      deviceCount: "1",
-                      icon: Icons.light,
-                      onTap: () {
-                        print("Living room");
-                      },
-                    ),
-                    RoomCard(
-                      roomName: "Movie room",
-                      deviceCount: "1",
-                      icon: Icons.movie_creation,
-                      onTap: () {
-                        print("Living room");
-                      },
-                    ),
-                    RoomCard(
-                      roomName: "Study room",
-                      deviceCount: "1",
-                      icon: Icons.light,
-                      onTap: () {
-                        print("Living room");
-                      },
-                    ),
-                    RoomCard(
-                      roomName: "Study room",
-                      deviceCount: "1",
-                      icon: Icons.light,
-                      onTap: () {
-                        print("Living room");
-                      },
-                    )
-                  ],
+                  children: roomController.rooms
+                      .map(
+                        (e) => RoomCard(
+                          roomName: e.roomName!,
+                          deviceCount: "4",
+                          icon: e.icon!,
+                          onTap: () {
+                            Get.to(RoomView());
+                          },
+                        ),
+                      )
+                      .toList(),
                 ),
               )
             ],

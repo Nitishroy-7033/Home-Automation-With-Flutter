@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class RoomCard extends StatelessWidget {
   final String roomName;
   final String deviceCount;
-  final IconData icon;
+  final String icon;
   final VoidCallback onTap;
   const RoomCard(
       {super.key,
@@ -31,14 +32,17 @@ class RoomCard extends StatelessWidget {
             Row(
               children: [
                 Container(
+                  width: 70,
+                  height: 70,
                   padding: EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Theme.of(context).colorScheme.background,
                   ),
-                  child: Icon(
+                  child: SvgPicture.asset(
                     icon,
-                    size: 40,
+                    height: 30,
+                    width: 30,
                   ),
                 ),
               ],
