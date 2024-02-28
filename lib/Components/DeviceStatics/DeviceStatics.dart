@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:smart_home/Models/DeviceData.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DeviceStatics extends StatelessWidget {
-  const DeviceStatics({Key? key}) : super(key: key);
+  final List<DeviceData> data;
+  final String title;
+  const DeviceStatics({Key? key, required this.data, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var data = [
-      GraphData("Mon", 10),
-      GraphData("Tue", 5),
-      GraphData("Wed", 30),
-      GraphData("Thu", 40),
-      GraphData("Fri", 50),
-      GraphData("Sat", 40),
-      GraphData("Sun", 30),
-    ];
     return Container(
       height: 400,
       decoration: BoxDecoration(
@@ -23,41 +18,33 @@ class DeviceStatics extends StatelessWidget {
       ),
       padding: EdgeInsets.all(5),
       child: SfCartesianChart(
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-        primaryYAxis: NumericAxis(minimum: 0, maximum: 50, interval: 10),
-        primaryXAxis: CategoryAxis(
-          labelStyle:
-              TextStyle(color: Theme.of(context).colorScheme.onBackground),
+        title: ChartTitle(text: title),
+        primaryXAxis: DateTimeAxis(
+          majorTickLines: MajorTickLines(size: 0),
+          axisLine: AxisLine(width: 0),
+          minorTickLines: MinorTickLines(size: 0),
+          borderWidth: 0,
+          axisBorderType: AxisBorderType.withoutTopAndBottom,
+          majorGridLines: MajorGridLines(
+              width: 2, color: Theme.of(context).colorScheme.background),
+          minorGridLines: MinorGridLines(
+              width: 2, color: Theme.of(context).colorScheme.background),
+          dateFormat: DateFormat.MMMd(),
         ),
-        isTransposed: false,
-        title: ChartTitle(
-          text: "Weekly Usage",
-          textStyle: TextStyle(
-            color: Theme.of(context).colorScheme.onBackground,
-          ),
-        ),
-        series: <CartesianSeries<GraphData, String>>[
-          ColumnSeries<GraphData, String>(
-            dataSource: data,
-            xValueMapper: (GraphData sales, _) => sales.time,
-            yValueMapper: (GraphData sales, _) => sales.value,
-            dataLabelSettings: const DataLabelSettings(isVisible: false),
+        series: [
+          ColumnSeries<DeviceData, DateTime>(
             color: Theme.of(context).colorScheme.primary,
-            width: 3,
-          ),
+            enableTooltip: true,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+            dataSource: data,
+            xValueMapper: (DeviceData data, _) => data.dateTime,
+            yValueMapper: (DeviceData data, _) => data.value,
+          )
         ],
-        tooltipBehavior: TooltipBehavior(enable: true),
       ),
     );
   }
-}
-
-class GraphData {
-  final String time;
-  final int value;
-
-  GraphData(
-    this.time,
-    this.value,
-  );
 }

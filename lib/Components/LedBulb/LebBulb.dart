@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Components/DeviceStatics/DeviceStatics.dart';
 import 'package:smart_home/Components/Timer/TimerTile.dart';
+import 'package:smart_home/Models/DeviceData.dart';
 
 class LedBulb extends StatelessWidget {
   const LedBulb({super.key});
@@ -19,6 +20,15 @@ class LedBulb extends StatelessWidget {
     RxString onTime = "12:00 AM".obs;
     RxString offTime = "12:00 PM".obs;
     RxInt selectedColor = 0.obs;
+    var data = [
+      DeviceData(dateTime: DateTime(2024, 2, 1), value: 12),
+      DeviceData(dateTime: DateTime(2024, 2, 2), value: 43),
+      DeviceData(dateTime: DateTime(2024, 2, 3), value: 54),
+      DeviceData(dateTime: DateTime(2024, 2, 4), value: 23),
+      DeviceData(dateTime: DateTime(2024, 2, 5), value: 50),
+      DeviceData(dateTime: DateTime(2024, 2, 6), value: 23),
+      DeviceData(dateTime: DateTime(2024, 2, 8), value: 34),
+    ];
     return Scaffold(
       appBar: AppBar(
         title: Text('Led Bulb'),
@@ -109,7 +119,19 @@ class LedBulb extends StatelessWidget {
                 offTime: offTime,
               ),
               SizedBox(height: 30),
-              DeviceStatics(),
+              Row(
+                children: [
+                  Text(
+                    "Statics",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
+                ],
+              ),
+              SizedBox(height: 10),
+              DeviceStatics(
+                data: data,
+                title: "Bulb usage",
+              ),
             ],
           ),
         ),

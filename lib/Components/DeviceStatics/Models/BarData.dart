@@ -1,3 +1,0 @@
-class BarData{
-  final 
-}
