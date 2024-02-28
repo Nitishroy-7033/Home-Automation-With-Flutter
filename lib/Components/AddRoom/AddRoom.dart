@@ -8,10 +8,22 @@ import '../PrimaryButton.dart';
 
 Future<dynamic> AddRoom(BuildContext context) {
   List myIcons = [
-    IconPaths.fan,
-    IconPaths.home,
-    IconPaths.menu,
     IconPaths.wifi,
+    IconPaths.menu,
+    IconPaths.home,
+    IconPaths.add_image,
+    IconPaths.bed,
+    IconPaths.bulb,
+    IconPaths.device,
+    IconPaths.door,
+    IconPaths.fan,
+    IconPaths.mic,
+    IconPaths.password,
+    IconPaths.phone,
+    IconPaths.sofa,
+    IconPaths.speaker,
+    IconPaths.tem,
+    IconPaths.wifiLock,
   ];
   RxString selectedIcon = "".obs;
   TextEditingController roomName = TextEditingController();
