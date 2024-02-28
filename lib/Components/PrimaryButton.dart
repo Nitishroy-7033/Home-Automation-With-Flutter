@@ -4,23 +4,24 @@ class PrimaryButton extends StatelessWidget {
   final String btnName;
   final IconData icon;
   final VoidCallback ontap;
+  final Color color;
   const PrimaryButton(
       {super.key,
       required this.btnName,
       required this.icon,
-      required this.ontap});
+      required this.ontap, required this.color});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-         splashColor: Colors.transparent,
+      splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: ontap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Theme.of(context).colorScheme.primary,
+          color: color
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -29,7 +30,7 @@ class PrimaryButton extends StatelessWidget {
             SizedBox(width: 10),
             Text(
               btnName,
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
         ),

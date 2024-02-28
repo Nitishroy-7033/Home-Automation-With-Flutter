@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:smart_home/Views/ProfilePage/ProfileView.dart';
 
 import '../../../../Conifg/AssestPaths.dart';
 
@@ -40,8 +42,13 @@ class MyAppBar extends StatelessWidget {
           ],
         ),
       ),
-      CircleAvatar(
-        child: Text("N"),
+      InkWell(
+        onTap: () {
+          Get.to(ProfileView());
+        },
+        child: CircleAvatar(
+          child: Text("N"),
+        ),
       )
     ]);
   }

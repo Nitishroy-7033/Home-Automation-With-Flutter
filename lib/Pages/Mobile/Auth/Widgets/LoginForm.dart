@@ -41,6 +41,7 @@ class LoginForm extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     PrimaryButton(
+                      color: Theme.of(context).colorScheme.primary,
                       ontap: () {
                         Get.toNamed("/");
                       },

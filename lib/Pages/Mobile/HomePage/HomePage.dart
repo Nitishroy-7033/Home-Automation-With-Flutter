@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:smart_home/Components/AddRoom/AddRoom.dart';
 import 'package:smart_home/Components/BottomButton.dart';
-import 'package:smart_home/Conifg/AssestPaths.dart';
 import 'package:smart_home/Pages/Mobile/HomePage/Widgets/AppBar.dart';
 import 'package:smart_home/Pages/Mobile/HomePage/Widgets/RoomCard.dart';
 import 'package:smart_home/Views/Room/RoomView.dart';
@@ -18,6 +17,7 @@ class MobileHomePage extends StatelessWidget {
         icon: Icons.add,
         onTap: () {
           print("Add room");
+          AddRoom(context);
         },
       ),
       body: SafeArea(
