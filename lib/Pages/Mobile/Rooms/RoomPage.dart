@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Components/BottomButton.dart';
+import 'package:smart_home/Components/LedBulb/LebBulb.dart';
 import 'package:smart_home/Pages/Mobile/Rooms/Widgets/DeviceCard.dart';
 import 'package:smart_home/Pages/Mobile/Rooms/Widgets/RoomStaticsCard.dart';
 
@@ -86,7 +87,9 @@ class MobileRoomPage extends StatelessWidget {
                 DeviceCard(
                   deviceName: "Bulb",
                   icon: Icons.light,
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(LedBulb());
+                  },
                   isOn: isOn,
                 ),
                 DeviceCard(
