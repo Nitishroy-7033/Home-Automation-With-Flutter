@@ -25,6 +25,7 @@ var darkTheme = ThemeData(
         borderSide: BorderSide.none,
       ),
     ),
+
     textTheme: const TextTheme(
       headlineMedium: TextStyle(
         fontFamily: "Poppins",

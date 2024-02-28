@@ -12,14 +12,15 @@ class LedBulb extends StatelessWidget {
     RxBool isOn = true.obs;
 
     List colors = [
+      Colors.white,
       Colors.red,
       Colors.green,
       Colors.blue,
-      Colors.white,
     ];
     RxString onTime = "12:00 AM".obs;
     RxString offTime = "12:00 PM".obs;
     RxInt selectedColor = 0.obs;
+
     var data = [
       DeviceData(dateTime: DateTime(2024, 2, 1), value: 12),
       DeviceData(dateTime: DateTime(2024, 2, 2), value: 43),
@@ -39,14 +40,17 @@ class LedBulb extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 120),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.light,
-                    size: 200,
-                  ),
-                ],
+              Obx(
+                () => Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.light,
+                      size: 200,
+                      color: colors[selectedColor.value],
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 20),
               Row(

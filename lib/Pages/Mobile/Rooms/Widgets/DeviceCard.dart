@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:smart_home/Conifg/AssestPaths.dart';
 
 class DeviceCard extends StatelessWidget {
   final String deviceName;
   final RxBool isOn;
-  final IconData icon;
+  final String icon;
   final VoidCallback onTap;
   const DeviceCard(
       {super.key,
@@ -31,9 +33,9 @@ class DeviceCard extends StatelessWidget {
             Row(
               children: [
                 Obx(
-                  () => Icon(
-                    icon,
-                    size: 50,
+                  () => SvgPicture.asset(
+                  icon, 
+                    width: 50,
                     color: isOn.value
                         ? Theme.of(context).colorScheme.onBackground
                         : Theme.of(context).colorScheme.onPrimaryContainer,

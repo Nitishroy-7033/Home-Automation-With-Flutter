@@ -8,4 +8,5 @@ class IconPaths {
   static const String wifi = "${basePath}wifi.svg";
   static const String menu = "${basePath}menu.svg";
   static const String home = "${basePath}home.svg";
+  static const String fan = "${basePath}fan.svg";
 }

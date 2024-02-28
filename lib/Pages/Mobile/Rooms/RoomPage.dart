@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Components/BottomButton.dart';
+import 'package:smart_home/Components/Fan/FanDevice.dart';
 import 'package:smart_home/Components/LedBulb/LebBulb.dart';
+import 'package:smart_home/Conifg/AssestPaths.dart';
 import 'package:smart_home/Pages/Mobile/Rooms/Widgets/DeviceCard.dart';
 import 'package:smart_home/Pages/Mobile/Rooms/Widgets/RoomStaticsCard.dart';
 
@@ -86,7 +88,7 @@ class MobileRoomPage extends StatelessWidget {
               children: [
                 DeviceCard(
                   deviceName: "Bulb",
-                  icon: Icons.light,
+                  icon: IconPaths.fan,
                   onTap: () {
                     Get.to(LedBulb());
                   },
@@ -94,19 +96,21 @@ class MobileRoomPage extends StatelessWidget {
                 ),
                 DeviceCard(
                   deviceName: "Fan",
-                  icon: Icons.mode_fan_off,
-                  onTap: () {},
+                  icon: IconPaths.fan,
+                  onTap: () {
+                    Get.to(FanDevice());
+                  },
                   isOn: isOn,
                 ),
                 DeviceCard(
                   deviceName: "Speaker",
-                  icon: Icons.speaker,
+                  icon: IconPaths.fan,
                   onTap: () {},
                   isOn: isOn,
                 ),
                 DeviceCard(
                   deviceName: "Door",
-                  icon: Icons.door_front_door,
+                  icon: IconPaths.fan,
                   onTap: () {},
                   isOn: isOn,
                 )
