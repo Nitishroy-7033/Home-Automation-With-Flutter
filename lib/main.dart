@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       darkTheme: darkTheme,
       getPages: pages,
       themeMode: ThemeMode.dark,
-      initialRoute: '/auth',
+      initialRoute: '/',
     );
   }
 }

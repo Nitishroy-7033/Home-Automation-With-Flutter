@@ -3,35 +3,31 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Conifg/AssestPaths.dart';
 
-class DeviceCard extends StatelessWidget {
+class WebDeviceCard extends StatelessWidget {
   final String deviceName;
   final RxBool isOn;
   final String icon;
   final VoidCallback onTap;
-  final bool isWeb;
-  const DeviceCard({
-    super.key,
-    required this.deviceName,
-    required this.icon,
-    required this.onTap,
-    required this.isOn,
-    this.isWeb = false,
-  });
+  const WebDeviceCard(
+      {super.key,
+      required this.deviceName,
+      required this.icon,
+      required this.onTap,
+      required this.isOn});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
+      focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: isWeb
-              ? Theme.of(context).colorScheme.background
-              : Theme.of(context).colorScheme.primaryContainer,
+          color: Theme.of(context).colorScheme.background,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
