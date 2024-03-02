@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 import 'package:smart_home/Components/DeviceStatics/DeviceStatics.dart';
 import 'package:smart_home/Components/Timer/TimerTile.dart';
 import 'package:smart_home/Models/DeviceData.dart';
+import 'package:smart_home/Models/DeviceModel.dart';
 
 class LedBulb extends StatelessWidget {
-  const LedBulb({super.key});
+  final DeviceModel deviceModel;
+  const LedBulb({super.key, required this.deviceModel});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,10 @@ class LedBulb extends StatelessWidget {
     ];
     RxString onTime = "12:00 AM".obs;
     RxString offTime = "12:00 PM".obs;
+    onTime.value = deviceModel.onTime!;
+    offTime.value = deviceModel.offTime!;
     RxInt selectedColor = 0.obs;
+    selectedColor.value = deviceModel.selectedColorIndex!;
 
     var data = [
       DeviceData(dateTime: DateTime(2024, 2, 1), value: 12),
@@ -32,10 +37,10 @@ class LedBulb extends StatelessWidget {
     ];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Led Bulb'),
+        title: Text(deviceModel.deviceName!),
       ),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding:const EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
             children: [

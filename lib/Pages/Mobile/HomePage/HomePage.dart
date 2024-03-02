@@ -50,7 +50,12 @@ class MobileHomePage extends StatelessWidget {
                           deviceCount: "4",
                           icon: e.icon!,
                           onTap: () {
-                            Get.to(RoomView());
+                            Get.to(
+                              RoomView(
+                                room: e,
+                                devices: e.devices!,
+                              ),
+                            );
                           },
                         ),
                       )

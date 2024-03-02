@@ -34,7 +34,7 @@ class DeviceCard extends StatelessWidget {
               children: [
                 Obx(
                   () => SvgPicture.asset(
-                  icon, 
+                    icon,
                     width: 50,
                     color: isOn.value
                         ? Theme.of(context).colorScheme.onBackground
@@ -60,7 +60,7 @@ class DeviceCard extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 5),
+            // SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

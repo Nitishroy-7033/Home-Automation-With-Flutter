@@ -4,7 +4,7 @@
 //   "updatedAt":"",
 //   "createdBy":"",
 //   "roomId":"",
-//   "name":"",
+//   "deviceName":"",
 //   "icon":"",
 //   "type":"",
 //   "status":"",
@@ -35,12 +35,13 @@ class DeviceModel {
   String? updatedAt;
   String? createdBy;
   String? roomId;
-  String? name;
+  String? deviceName;
   String? icon;
   String? type;
   String? status;
   bool? isOn;
   String? deviceColor;
+  int? selectedColorIndex;
   String? deviceSpeed;
   String? deviceVolume;
   bool? isTimerSet;
@@ -62,12 +63,13 @@ class DeviceModel {
       this.updatedAt,
       this.createdBy,
       this.roomId,
-      this.name,
+      this.deviceName,
       this.icon,
       this.type,
       this.status,
       this.isOn,
       this.deviceColor,
+      this.selectedColorIndex,
       this.deviceSpeed,
       this.deviceVolume,
       this.isTimerSet,
@@ -89,15 +91,17 @@ class DeviceModel {
     updatedAt = json["updatedAt"];
     createdBy = json["createdBy"];
     roomId = json["roomId"];
-    name = json["name"];
+    deviceName = json["deviceName"];
     icon = json["icon"];
     type = json["type"];
     status = json["status"];
     isOn = json["isOn"];
     deviceColor = json["deviceColor"];
+    selectedColorIndex = json["selectedColorIndex"];
     deviceSpeed = json["deviceSpeed"];
     deviceVolume = json["deviceVolume"];
     isTimerSet = json["isTimerSet"];
+    onTime = json["onTime"];
     onTime = json["onTime"];
     offTime = json["offTime"];
     brightness = json["brightness"];
@@ -118,12 +122,13 @@ class DeviceModel {
     _data["updatedAt"] = updatedAt;
     _data["createdBy"] = createdBy;
     _data["roomId"] = roomId;
-    _data["name"] = name;
+    _data["deviceName"] = deviceName;
     _data["icon"] = icon;
     _data["type"] = type;
     _data["status"] = status;
     _data["isOn"] = isOn;
     _data["deviceColor"] = deviceColor;
+    _data["selectedColorIndex"] = selectedColorIndex;
     _data["deviceSpeed"] = deviceSpeed;
     _data["deviceVolume"] = deviceVolume;
     _data["isTimerSet"] = isTimerSet;

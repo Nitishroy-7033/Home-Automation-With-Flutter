@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Components/BottomButton.dart';
-import 'package:smart_home/Components/Fan/FanDevice.dart';
-import 'package:smart_home/Components/LedBulb/LebBulb.dart';
+import 'package:smart_home/Devices/Fan/FanDevice.dart';
+import 'package:smart_home/Devices/LedBulb/LebBulb.dart';
 import 'package:smart_home/Conifg/AssestPaths.dart';
+import 'package:smart_home/Controller/RoomController.dart';
 import 'package:smart_home/Pages/Mobile/Rooms/Widgets/DeviceCard.dart';
 import 'package:smart_home/Pages/Mobile/Rooms/Widgets/RoomStaticsCard.dart';
 
+import '../../../Models/DeviceModel.dart';
+import '../../../Models/RoomModel.dart';
+
 class MobileRoomPage extends StatelessWidget {
-  const MobileRoomPage({super.key});
+  final List<DeviceModel> devices;
+  final RoomModel room;
+  const MobileRoomPage({super.key, required this.devices, required this.room});
 
   @override
   Widget build(BuildContext context) {
     RxBool isOn = true.obs;
+    RoomController roomController = Get.put(RoomController());
     return Scaffold(
       floatingActionButton: Bottombutton(
         btnName: "Add device",
@@ -39,17 +46,17 @@ class MobileRoomPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RoomStaticsCard(
-                  title: "Temprature",
-                  value: "23",
+                  title: "Humidity",
+                  value: room.humidity!,
                   icon: Icons.ac_unit,
                 ),
                 RoomStaticsCard(
                   title: "Temprature",
-                  value: "23",
+                  value: room.temperature!,
                   icon: Icons.ac_unit,
                 ),
               ],
@@ -81,41 +88,35 @@ class MobileRoomPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Expanded(
-                child: GridView.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              children: [
-                DeviceCard(
-                  deviceName: "Bulb",
-                  icon: IconPaths.fan,
-                  onTap: () {
-                    Get.to(LedBulb());
-                  },
-                  isOn: isOn,
-                ),
-                DeviceCard(
-                  deviceName: "Fan",
-                  icon: IconPaths.fan,
-                  onTap: () {
-                    Get.to(FanDevice());
-                  },
-                  isOn: isOn,
-                ),
-                DeviceCard(
-                  deviceName: "Speaker",
-                  icon: IconPaths.fan,
-                  onTap: () {},
-                  isOn: isOn,
-                ),
-                DeviceCard(
-                  deviceName: "Door",
-                  icon: IconPaths.fan,
-                  onTap: () {},
-                  isOn: isOn,
-                )
-              ],
-            ))
+              child: devices.length > 0
+                  ? GridView.count(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      children: devices
+                          .map(
+                            (e) => DeviceCard(
+                              deviceName: e.deviceName!,
+                              icon: e.icon!,
+                              onTap: () {
+                                roomController.deviceRouteMange(e);
+                              },
+                              isOn: isOn,
+                            ),
+                          )
+                          .toList(),
+                    )
+                  : Center(
+                      child: Text(
+                        "No devices",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color:
+                              Theme.of(context).colorScheme.onPrimaryContainer,
+                        ),
+                      ),
+                    ),
+            ),
           ],
         ),
       ),
