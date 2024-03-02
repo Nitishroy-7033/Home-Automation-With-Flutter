@@ -4,11 +4,13 @@ class RoomStaticsCard extends StatelessWidget {
   final String title;
   final String value;
   final IconData icon;
+  final bool isWeb;
   const RoomStaticsCard(
       {super.key,
       required this.title,
       required this.value,
-      required this.icon});
+      required this.icon,
+      this.isWeb = false});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,9 @@ class RoomStaticsCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 2.2,
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: isWeb
+            ? Theme.of(context).colorScheme.background
+            : Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(

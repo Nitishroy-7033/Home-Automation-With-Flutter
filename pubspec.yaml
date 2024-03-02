@@ -44,6 +44,7 @@ dependencies:
   network_info_plus: ^4.1.0+1
   http: ^1.2.0
   dropdown_button2: ^2.3.9
+  sleek_circular_slider: ^2.0.1
   
 
 dev_dependencies:

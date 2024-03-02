@@ -6,12 +6,13 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 class DeviceStatics extends StatelessWidget {
   final List<DeviceData> data;
   final String title;
-  const DeviceStatics({Key? key, required this.data, required this.title}) : super(key: key);
+  const DeviceStatics({Key? key, required this.data, required this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: MediaQuery.of(context).size.height * 0.4,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Theme.of(context).colorScheme.primaryContainer,

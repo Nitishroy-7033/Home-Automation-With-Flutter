@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:smart_home/Devices/Ac/AcDevice.dart';
 import 'package:smart_home/Devices/CommingSoon/DeviceCommingShoon.dart';
 import 'package:smart_home/Devices/Fan/FanDevice.dart';
 import 'package:smart_home/Devices/LedBulb/LebBulb.dart';
@@ -191,7 +192,8 @@ class RoomController extends GetxController {
       case "fan":
         Get.to(FanDevice());
         break;
-
+      case "bed":
+        Get.to(AcDevice());
       default:
         Get.to(DeviceCommingSoon());
     }
