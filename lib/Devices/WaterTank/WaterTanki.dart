@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:liquid_progress_indicator_v2/liquid_progress_indicator.dart';
 import 'package:smart_home/Components/DeviceStatics/DeviceStatics.dart';
 import 'package:smart_home/Components/Timer/TimerTile.dart';
 import 'package:smart_home/Controller/FanController.dart';
 import 'package:smart_home/Models/DeviceData.dart';
 
-class AcDevice extends StatelessWidget {
-  const AcDevice({super.key});
+class WaterTankiDevice extends StatelessWidget {
+  const WaterTankiDevice({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class AcDevice extends StatelessWidget {
     RxDouble slider = 50.0.obs;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ac'),
+        title: Text('Water Tanki'),
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
@@ -36,27 +37,22 @@ class AcDevice extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 50),
-              // SleekCircularSlider(
-              //   appearance: CircularSliderAppearance(
-              //     size: 300,
-              //     angleRange: 180,
-              //     customWidths: CustomSliderWidths(
-              //       progressBarWidth: 40,
-              //       trackWidth: 40,
-              //       shadowWidth: 40,
-              //     ),
-              //     animationEnabled: true,
-              //   ),
-              //   onChange: (double value) {
-              //     print(value);
-              //   },
-              // ),
+              LiquidCircularProgressIndicator(
+                value: 0.25,
+                valueColor: AlwaysStoppedAnimation(Colors.blue),
+                backgroundColor: Colors.blue[
+                    50], // Defaults to the current Theme's backgroundColor.
+                borderColor: Colors.blue,
+                borderWidth: 5.0,
+                direction: Axis.vertical,
+                center: Text("Loading..."),
+              ),
               const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Obx(
-                    () => Text(isOn.value ? "Ac on" : "Ac off",
+                    () => Text(isOn.value ? "Water on" : "Water off",
                         style: Theme.of(context).textTheme.labelLarge),
                   ),
                   Obx(
