@@ -10,7 +10,7 @@ class WebAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // height: 90,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),

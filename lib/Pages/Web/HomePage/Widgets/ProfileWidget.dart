@@ -43,7 +43,7 @@ class ProfileWidget extends StatelessWidget {
             ],
           ),
           CircleAvatar(
-            radius: 70,
+            radius: 50,
             backgroundColor: Theme.of(context).colorScheme.background,
             child: Text("A"),
           ),
@@ -71,25 +71,25 @@ class ProfileWidget extends StatelessWidget {
             child: Row(
               children: [
                 CircleAvatar(
-                  radius: 50,
+                  radius: 30,
                   backgroundColor: Theme.of(context).colorScheme.background,
                   child: Text("A"),
                 ),
                 SizedBox(width: 10),
                 CircleAvatar(
-                  radius: 50,
+                  radius: 30,
                   backgroundColor: Theme.of(context).colorScheme.background,
                   child: Text("A"),
                 ),
                 SizedBox(width: 10),
                 CircleAvatar(
-                  radius: 50,
+                  radius: 30,
                   backgroundColor: Theme.of(context).colorScheme.background,
                   child: Text("A"),
                 ),
                 SizedBox(width: 10),
                 CircleAvatar(
-                  radius: 50,
+                  radius: 30,
                   backgroundColor: Theme.of(context).colorScheme.background,
                   child: Text("A"),
                 ),

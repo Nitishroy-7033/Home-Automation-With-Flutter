@@ -4,6 +4,7 @@ import 'package:smart_home/Components/DeviceStatics/DeviceStatics.dart';
 import 'package:smart_home/Pages/Mobile/Rooms/Widgets/RoomStaticsCard.dart';
 import 'package:smart_home/Pages/Web/HomePage/Widgets/AppBar.dart';
 import 'package:smart_home/Pages/Web/HomePage/Widgets/DeviceArea.dart';
+import 'package:smart_home/Pages/Web/HomePage/Widgets/MusicArea.dart';
 import 'package:smart_home/Pages/Web/HomePage/Widgets/ProfileWidget.dart';
 import 'package:smart_home/Pages/Web/HomePage/Widgets/RoomStatics.dart';
 import '../../../Components/AddRoom/AddRoom.dart';
@@ -68,14 +69,7 @@ class WebHomePage extends StatelessWidget {
                             ),
                             SizedBox(width: 10),
                             Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .primaryContainer,
-                                ),
-                              ),
+                              child: MusicArea(),
                             ),
                           ],
                         ),

@@ -46,6 +46,8 @@ dependencies:
   dropdown_button2: ^2.3.9
   # sleek_circular_slider: ^2.0.1
   liquid_progress_indicator_v2: ^0.5.0
+  firebase_core: ^2.27.0
+  firebase_auth: ^4.17.8
   
 
 dev_dependencies:

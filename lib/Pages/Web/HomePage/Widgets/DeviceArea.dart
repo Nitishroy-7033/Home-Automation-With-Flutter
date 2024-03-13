@@ -16,7 +16,7 @@ class DeviceArea extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           color: Theme.of(context).colorScheme.primaryContainer,
         ),
-        height: 510,
+        height: 450,
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
@@ -49,7 +49,7 @@ class DeviceArea extends StatelessWidget {
               child: GridView.count(
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
-                crossAxisCount: w > 1550
+                crossAxisCount: w > 1400
                     ? 4
                     : w > 1000
                         ? 3

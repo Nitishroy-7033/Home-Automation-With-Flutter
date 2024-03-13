@@ -16,7 +16,7 @@ class RoomStatics extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           color: Theme.of(context).colorScheme.primaryContainer,
         ),
-        child: Column(
+        child: ListView(
           children: [
             Row(
               children: [
