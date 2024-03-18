@@ -8,14 +8,20 @@ class AuthController extends GetxController {
   RxBool isLoading = false.obs;
   final auth = FirebaseAuth.instance;
   final db = FirebaseFirestore.instance;
+  Rx<UserModel> user = UserModel().obs;
 
-  Future<void> SignUp(String name, String email, String password) async {
+  Future<void> signUp(String name, String email, String password) async {
     isLoading.value = true;
     try {
-      var newUser = UserModel(name: name, email: email, password: password);
       await auth
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((value) async {
+        var newUser = UserModel(
+          id: value.user!.uid,
+          name: name,
+          email: email,
+          password: password,
+        );
         await db.collection("users").doc(value.user!.uid).set(
               newUser.toJson(),
             );
@@ -38,4 +44,10 @@ class AuthController extends GetxController {
     }
     isLoading.value = false;
   }
+
+  Future<void> signOut() async {
+    await auth.signOut();
+    Get.offAllNamed("/auth");
+  }
+  
 }

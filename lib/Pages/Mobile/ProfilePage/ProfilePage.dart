@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smart_home/Controller/AuthController.dart';
+import 'package:smart_home/Controller/ProfileController.dart';
 
 class MobileProfilePage extends StatelessWidget {
   const MobileProfilePage({super.key});
@@ -7,6 +9,16 @@ class MobileProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RxBool isEdit = false.obs;
+    AuthController authController = Get.put(AuthController());
+    ProfileController profileController = Get.put(ProfileController());
+    TextEditingController name =
+        TextEditingController(text: profileController.user.value.name ?? "");
+    TextEditingController email = TextEditingController(
+        text: authController.auth.currentUser!.email ?? "");
+    TextEditingController phone = TextEditingController(
+        text: authController.auth.currentUser!.phoneNumber ?? "");
+    TextEditingController uid =
+        TextEditingController(text: authController.auth.currentUser!.uid);
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
@@ -27,17 +39,24 @@ class MobileProfilePage extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 80,
-                        child: Text("N"),
+                        child: Text(
+                          "N",
+                          style: TextStyle(fontSize: 28),
+                        ),
                         backgroundColor:
                             Theme.of(context).colorScheme.background,
                       ),
                       SizedBox(height: 10),
-                      Text(
-                        'Nitish kumar',
-                        style: Theme.of(context).textTheme.bodyMedium,
+                      Obx(
+                        () => Text(
+                          profileController.user.value.name ?? "Root",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       ),
                       SizedBox(height: 5),
-                      Text('Nitishr8333@gmail.com',
+                      Text(
+                          authController.auth.currentUser!.email ??
+                              "XXXXXXX@gmail.com",
                           style: Theme.of(context).textTheme.labelLarge),
                     ],
                   ),
@@ -64,7 +83,11 @@ class MobileProfilePage extends StatelessWidget {
                       const SizedBox(height: 20),
                       Obx(
                         () => TextField(
+                          controller: name,
                           enabled: isEdit.value,
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
                           decoration: const InputDecoration(
                             hintText: 'Name',
                             prefixIcon: Icon(Icons.person),
@@ -74,6 +97,10 @@ class MobileProfilePage extends StatelessWidget {
                       const SizedBox(height: 20),
                       Obx(
                         () => TextField(
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                          controller: email,
                           enabled: isEdit.value,
                           decoration: const InputDecoration(
                             hintText: 'Email',
@@ -84,6 +111,10 @@ class MobileProfilePage extends StatelessWidget {
                       const SizedBox(height: 20),
                       Obx(
                         () => TextField(
+                          controller: name,
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
                           enabled: isEdit.value,
                           decoration: const InputDecoration(
                             hintText: 'Phone',
@@ -94,7 +125,11 @@ class MobileProfilePage extends StatelessWidget {
                       const SizedBox(height: 20),
                       Obx(
                         () => TextField(
-                          enabled: isEdit.value,
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                          controller: uid,
+                          enabled: false,
                           decoration: const InputDecoration(
                             hintText: 'User Uiniq Id',
                             prefixIcon: Icon(Icons.key),
@@ -119,7 +154,9 @@ class MobileProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    authController.signOut();
+                  },
                   icon: Icon(Icons.exit_to_app_sharp),
                   label: Text('Logout'),
                 ),

@@ -56,9 +56,10 @@ class AuthPageBody extends StatelessWidget {
                       ),
                       InkWell(
                            splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
+                               highlightColor: Colors.transparent,
                         onTap: () {
                           isLogin.value = false;
+
                         },
                         child: SizedBox(
                           width: MediaQuery.sizeOf(context).width / 2.5,

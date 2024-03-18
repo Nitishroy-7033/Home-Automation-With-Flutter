@@ -20,7 +20,7 @@ class RoomCard extends StatelessWidget {
       highlightColor: Colors.transparent,
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Theme.of(context).colorScheme.primaryContainer,
@@ -47,7 +47,7 @@ class RoomCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             Row(
               children: [
                 Text(

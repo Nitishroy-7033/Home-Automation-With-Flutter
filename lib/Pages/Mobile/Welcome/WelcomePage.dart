@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class MobileWelcomePage extends StatelessWidget {
   const MobileWelcomePage({super.key});
@@ -9,8 +10,13 @@ class MobileWelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Welcome to the app'),
-      ),
+          child: ElevatedButton.icon(
+        onPressed: () {
+          Get.offAllNamed("/auth");
+        },
+        icon: Icon(Icons.golf_course),
+        label: Text('GO TO LOGIN'),
+      )),
     );
   }
 }
