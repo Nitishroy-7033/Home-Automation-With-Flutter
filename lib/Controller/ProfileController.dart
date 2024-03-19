@@ -16,10 +16,12 @@ class ProfileController extends GetxController {
   }
 
   Future<void> getUserDetails() async {
+    isLoading.value = true;
     await db.collection("users").doc(auth.currentUser!.uid).get().then(
       (value) {
         user.value = UserModel.fromJson(value.data()!);
       },
     );
+    isLoading.value = true;
   }
 }

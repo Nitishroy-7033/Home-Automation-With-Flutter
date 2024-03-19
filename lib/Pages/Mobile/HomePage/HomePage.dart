@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Components/AddRoom/AddRoom.dart';
 import 'package:smart_home/Components/BottomButton.dart';
+import 'package:smart_home/Controller/ProfileController.dart';
 import 'package:smart_home/Controller/RoomController.dart';
 import 'package:smart_home/Pages/Mobile/HomePage/Widgets/AppBar.dart';
 import 'package:smart_home/Pages/Mobile/HomePage/Widgets/RoomCard.dart';
@@ -13,6 +14,7 @@ class MobileHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RoomController roomController = Get.put(RoomController());
+    ProfileController profileController = Get.put(ProfileController());
     return Scaffold(
       floatingActionButton: Bottombutton(
         btnName: "Add room",
@@ -31,10 +33,12 @@ class MobileHomePage extends StatelessWidget {
               SizedBox(height: 20),
               Row(
                 children: [
-                  Text(
-                    "Hello, Ni30 ⭐",
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
+                  Obx(
+                    () => Text(
+                      "Hello, ${profileController.user.value.name ?? ".."} ⭐",
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                  )
                 ],
               ),
               SizedBox(height: 20),

@@ -21,7 +21,7 @@ class WebAuthPage extends StatelessWidget {
             Container(
                 padding: EdgeInsets.all(20),
                 width: MediaQuery.of(context).size.width / 2,
-                height: MediaQuery.of(context).size.height / 1.5,
+                height: MediaQuery.of(context).size.height / 1.2,
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primaryContainer,
                   borderRadius: BorderRadius.circular(10),

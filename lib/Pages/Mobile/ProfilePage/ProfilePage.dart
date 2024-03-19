@@ -47,11 +47,9 @@ class MobileProfilePage extends StatelessWidget {
                             Theme.of(context).colorScheme.background,
                       ),
                       SizedBox(height: 10),
-                      Obx(
-                        () => Text(
-                          profileController.user.value.name ?? "Root",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
+                      Text(
+                        profileController.user.value.name ?? "Root",
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       SizedBox(height: 5),
                       Text(
@@ -123,17 +121,15 @@ class MobileProfilePage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      Obx(
-                        () => TextField(
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
-                          controller: uid,
-                          enabled: false,
-                          decoration: const InputDecoration(
-                            hintText: 'User Uiniq Id',
-                            prefixIcon: Icon(Icons.key),
-                          ),
+                      TextField(
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
+                        controller: uid,
+                        enabled: false,
+                        decoration: const InputDecoration(
+                          hintText: 'User Uiniq Id',
+                          prefixIcon: Icon(Icons.key),
                         ),
                       ),
                       const SizedBox(height: 20),

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../../Controller/ProfileController.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    ProfileController profileController = Get.put(ProfileController());
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -42,19 +46,28 @@ class ProfileWidget extends StatelessWidget {
               SizedBox(width: 10),
             ],
           ),
-          CircleAvatar(
-            radius: 50,
-            backgroundColor: Theme.of(context).colorScheme.background,
-            child: Text("A"),
+          Obx(
+            () => CircleAvatar(
+              radius: 50,
+              backgroundColor: Theme.of(context).colorScheme.background,
+              child: Text(
+                profileController.user.value.name![0].toUpperCase(),
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
           ),
           SizedBox(height: 10),
-          Text(
-            "Nitish Kumar",
-            style: Theme.of(context).textTheme.bodyLarge,
+          Obx(
+            () => Text(
+              profileController.user.value.name ?? "Root",
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
           ),
-          Text(
-            "NitishKumar@gmail.com",
-            style: Theme.of(context).textTheme.labelLarge,
+          Obx(
+            () => Text(
+              profileController.user.value.email ?? "XXXXX@gmail.com",
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
           ),
           SizedBox(height: 10),
           Row(

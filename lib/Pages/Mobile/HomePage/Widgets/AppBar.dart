@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:smart_home/Controller/AuthController.dart';
+import 'package:smart_home/Controller/ProfileController.dart';
 import 'package:smart_home/Controller/WifiController.dart';
 import 'package:smart_home/Views/ProfilePage/ProfileView.dart';
 
@@ -12,6 +14,7 @@ class MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WifiController wifiController = Get.put(WifiController());
+    ProfileController profileController = Get.put(ProfileController());
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Container(
         padding: EdgeInsets.all(15),
@@ -63,9 +66,7 @@ class MyAppBar extends StatelessWidget {
         onTap: () {
           Get.to(ProfileView());
         },
-        child: CircleAvatar(
-          child: Text("N"),
-        ),
+        child: CircleAvatar(child: Icon(Icons.person)),
       )
     ]);
   }

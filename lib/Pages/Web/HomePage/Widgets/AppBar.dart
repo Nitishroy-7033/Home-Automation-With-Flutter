@@ -1,6 +1,8 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:smart_home/Controller/ProfileController.dart';
 
 import '../../../../Conifg/AssestPaths.dart';
 
@@ -9,6 +11,7 @@ class WebAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProfileController profileController = Get.put(ProfileController());
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // height: 90,
@@ -29,7 +32,8 @@ class WebAppbar extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 20,
-                  child: Text("N"),
+                  child: Icon(Icons.person),
+                  backgroundColor: Theme.of(context).colorScheme.background,
                 ),
                 SizedBox(width: 20),
                 Column(
@@ -40,10 +44,12 @@ class WebAppbar extends StatelessWidget {
                       "Hello",
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
-                    Text(
-                      "Home Page",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
+                    Obx(
+                      () => Text(
+                        profileController.user.value.name ?? "..",
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    )
                   ],
                 ),
               ],

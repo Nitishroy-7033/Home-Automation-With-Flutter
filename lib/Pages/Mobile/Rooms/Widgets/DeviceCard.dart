@@ -28,7 +28,7 @@ class DeviceCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
           color: isWeb
               ? Theme.of(context).colorScheme.background
               : Theme.of(context).colorScheme.primaryContainer,
@@ -49,7 +49,7 @@ class DeviceCard extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             Row(
               children: [
                 Obx(

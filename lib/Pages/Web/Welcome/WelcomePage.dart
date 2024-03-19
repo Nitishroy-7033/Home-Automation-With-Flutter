@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:liquid_progress_indicator_v2/liquid_progress_indicator.dart';
 
 class WebWelcomePage extends StatelessWidget {
@@ -8,12 +9,17 @@ class WebWelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            width: 300,
-            height: 300,
+          Row(),
+          ElevatedButton.icon(
+            onPressed: () {
+              Get.offAllNamed("/auth");
+            },
+            icon: Icon(Icons.security),
+            label: Text("GO TO LOGIN PAGE"),
           ),
         ],
       ),
