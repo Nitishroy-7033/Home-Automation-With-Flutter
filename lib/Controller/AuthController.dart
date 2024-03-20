@@ -34,11 +34,12 @@ class AuthController extends GetxController {
     isLoading.value = false;
   }
 
-  Future<void> SignIn(String email, String password) async {
+  Future<void> signIn(String email, String password) async {
     isLoading.value = true;
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
       successMessage("Login Successfull ❤️ ");
+      Get.offAllNamed("/home");
     } catch (e) {
       errorMessage(e.toString());
     }
@@ -49,5 +50,4 @@ class AuthController extends GetxController {
     await auth.signOut();
     Get.offAllNamed("/auth");
   }
-  
 }

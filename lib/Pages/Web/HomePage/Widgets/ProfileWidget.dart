@@ -10,7 +10,7 @@ class ProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     ProfileController profileController = Get.put(ProfileController());
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Theme.of(context).colorScheme.primaryContainer,
@@ -27,7 +27,7 @@ class ProfileWidget extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(100)),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Container(
                 width: 15,
                 height: 15,
@@ -35,7 +35,7 @@ class ProfileWidget extends StatelessWidget {
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(100)),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Container(
                 width: 15,
                 height: 15,
@@ -43,7 +43,7 @@ class ProfileWidget extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                     borderRadius: BorderRadius.circular(100)),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
             ],
           ),
           Obx(
@@ -56,7 +56,7 @@ class ProfileWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Obx(
             () => Text(
               profileController.user.value.name ?? "Root",
@@ -69,7 +69,7 @@ class ProfileWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.labelLarge,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             children: [
               Text(
@@ -78,7 +78,7 @@ class ProfileWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -86,25 +86,25 @@ class ProfileWidget extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: Theme.of(context).colorScheme.background,
-                  child: Text("A"),
+                  child: const Text("A"),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: Theme.of(context).colorScheme.background,
-                  child: Text("A"),
+                  child: const Text("A"),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: Theme.of(context).colorScheme.background,
-                  child: Text("A"),
+                  child: const Text("A"),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: Theme.of(context).colorScheme.background,
-                  child: Text("A"),
+                  child: const Text("A"),
                 ),
               ],
             ),

@@ -43,7 +43,7 @@ class LoginForm extends StatelessWidget {
                     PrimaryButton(
                       color: Theme.of(context).colorScheme.primary,
                       ontap: () {
-                        Get.toNamed("/");
+                        authController.signIn(email.text, password.text);
                       },
                       btnName: "LOGIN",
                       icon: Icons.lock_open_outlined,

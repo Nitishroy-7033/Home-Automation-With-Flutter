@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Controller/ProfileController.dart';
+import 'package:smart_home/Controller/RoomController.dart';
+import 'package:smart_home/Models/RoomModel.dart';
 
+import '../../../../Components/AddRoom/AddRoom.dart';
+import '../../../../Components/BottomButton.dart';
 import '../../../../Conifg/AssestPaths.dart';
 
 class WebAppbar extends StatelessWidget {
@@ -12,6 +16,8 @@ class WebAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProfileController profileController = Get.put(ProfileController());
+    RoomController roomController = Get.put(RoomController());
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       // height: 90,
@@ -55,71 +61,71 @@ class WebAppbar extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.background,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: DropdownButton2(
-              // alignment: Alignment.bottomLeft,
-
-              underline: SizedBox(),
-              hint: Row(
-                children: [
-                  SvgPicture.asset(
-                    IconPaths.bed,
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-                  SizedBox(width: 20),
-                  Text("Home Page"),
-                ],
+          Obx(
+            () => Container(
+              width: 230,
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.background,
+                borderRadius: BorderRadius.circular(10),
               ),
-              items: [
-                DropdownMenuItem(
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        IconPaths.bed,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        width: 20,
+              child: roomController.rooms.isNotEmpty
+                  ? DropdownButton2(
+                      underline: SizedBox(),
+                      hint: Row(
+                        children: [
+                          SvgPicture.asset(
+                            IconPaths.bed,
+                            color: Theme.of(context).colorScheme.onBackground,
+                          ),
+                          SizedBox(width: 20),
+                          Text("Home Page"),
+                        ],
                       ),
-                      SizedBox(width: 20),
-                      Text("Living Room"),
-                    ],
-                  ),
-                  value: "livingRoom",
-                ),
-                DropdownMenuItem(
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        IconPaths.bulb,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        width: 20,
-                      ),
-                      SizedBox(width: 20),
-                      Text("Study Rooms"),
-                    ],
-                  ),
-                  value: "studyRoom",
-                ),
-                DropdownMenuItem(
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        IconPaths.home,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        width: 20,
-                      ),
-                      SizedBox(width: 20),
-                      Text("Bed Room"),
-                    ],
-                  ),
-                  value: "bedRoom",
-                ),
-              ],
-              onChanged: (value) {},
+                      value: roomController.selectedRoom.value.roomName!
+                          .toLowerCase(),
+                      items: roomController.rooms
+                          .map(
+                            (e) => DropdownMenuItem(
+                              value: e.roomName!.toLowerCase(),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    e.icon ?? IconPaths.bed,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground,
+                                    width: 20,
+                                  ),
+                                  SizedBox(width: 20),
+                                  Text(e.roomName!),
+                                ],
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
+                        roomController.selectedRoom.value = roomController.rooms
+                            .firstWhere((element) =>
+                                element.roomName!.toLowerCase() == value);
+                      },
+                    )
+                  : InkWell(
+                      onTap: () {
+                        AddRoom(context);
+                      },
+                      child: Container(
+                          height: 50,
+                          decoration: BoxDecoration(),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.add),
+                              SizedBox(width: 10),
+                              Text("Add Room"),
+                            ],
+                          )),
+                    ),
             ),
           ),
           Row(

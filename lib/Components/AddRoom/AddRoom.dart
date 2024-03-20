@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Components/IconSelector/IconSelector.dart';
 import 'package:smart_home/Conifg/AssestPaths.dart';
+import 'package:smart_home/Controller/RoomController.dart';
 
 import '../PrimaryButton.dart';
 
@@ -27,6 +28,7 @@ Future<dynamic> AddRoom(BuildContext context) {
   ];
   RxString selectedIcon = "".obs;
   TextEditingController roomName = TextEditingController();
+  RoomController roomController = Get.put(RoomController());
   return Get.bottomSheet(Container(
     height: 400,
     padding: EdgeInsets.all(20),
@@ -111,11 +113,18 @@ Future<dynamic> AddRoom(BuildContext context) {
                       Get.back();
                     },
                   ),
-                  PrimaryButton(
-                    color: Theme.of(context).colorScheme.primary,
-                    btnName: "Done",
-                    icon: Icons.done,
-                    ontap: () {},
+                  Obx(
+                    () => roomController.isLoading.value == true
+                        ? CircularProgressIndicator()
+                        : PrimaryButton(
+                            color: Theme.of(context).colorScheme.primary,
+                            btnName: "Done",
+                            icon: Icons.done,
+                            ontap: () {
+                              roomController.addRoom(
+                                  roomName.text, selectedIcon.value);
+                            },
+                          ),
                   ),
                 ],
               )

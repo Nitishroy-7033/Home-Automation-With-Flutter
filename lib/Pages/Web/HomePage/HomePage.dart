@@ -44,16 +44,16 @@ class WebHomePage extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            WebAppbar(),
-            SizedBox(height: 10),
+            const WebAppbar(),
+            const SizedBox(height: 10),
             Expanded(
               child: Row(
                 children: [
                   Expanded(
                       child: Column(
                     children: [
-                      DeviceArea(),
-                      SizedBox(height: 10),
+                      const DeviceArea(),
+                      const SizedBox(height: 10),
                       Expanded(
                         child: Row(
                           children: [
@@ -67,8 +67,8 @@ class WebHomePage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 10),
-                            Expanded(
+                            const SizedBox(width: 10),
+                            const Expanded(
                               child: MusicArea(),
                             ),
                           ],
@@ -76,7 +76,7 @@ class WebHomePage extends StatelessWidget {
                       )
                     ],
                   )),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Expanded(
                     child: Column(
                       children: [
@@ -94,10 +94,10 @@ class WebHomePage extends StatelessWidget {
                                 : const SizedBox()
                           ],
                         )),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Expanded(
                           child: Container(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Theme.of(context)
