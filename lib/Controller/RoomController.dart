@@ -109,4 +109,19 @@ class RoomController extends GetxController {
         Get.to(DeviceCommingSoon());
     }
   }
+
+  Stream<List<RoomModel>> getStreamRooms() {
+    return db
+        .collection("users")
+        .doc(auth.currentUser!.uid)
+        .collection("rooms")
+        .snapshots()
+        .map(
+          (snap) => snap.docs
+              .map(
+                (doc) => RoomModel.fromJson(doc.data()),
+              )
+              .toList(),
+        );
+  }
 }
