@@ -9,7 +9,7 @@ class DeviceArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RxBool isOn = true.obs;
+    bool isOn = true;
     var w = MediaQuery.of(context).size.width;
     return Container(
         decoration: BoxDecoration(

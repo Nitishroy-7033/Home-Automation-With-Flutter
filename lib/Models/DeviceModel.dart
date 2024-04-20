@@ -27,13 +27,16 @@
 
 // }
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smart_home/Models/DeviceData.dart';
+
+final auth = FirebaseAuth.instance;
 
 class DeviceModel {
   String? id;
   String? createdAt;
   String? updatedAt;
-  String? createdBy;
+  String? createdBy ;
   String? roomId;
   String? deviceName;
   String? icon;
@@ -57,33 +60,34 @@ class DeviceModel {
   String? energyRate;
   List<DeviceData>? statics;
 
-  DeviceModel(
-      {this.id,
-      this.createdAt,
-      this.updatedAt,
-      this.createdBy,
-      this.roomId,
-      this.deviceName,
-      this.icon,
-      this.type,
-      this.status,
-      this.isOn,
-      this.deviceColor,
-      this.selectedColorIndex,
-      this.deviceSpeed,
-      this.deviceVolume,
-      this.isTimerSet,
-      this.onTime,
-      this.offTime,
-      this.brightness,
-      this.temperature,
-      this.humidity,
-      this.battery,
-      this.mode,
-      this.timeUsage,
-      this.energyUsage,
-      this.energyRate,
-      this.statics});
+  DeviceModel({
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.createdBy,
+    this.roomId,
+    this.deviceName,
+    this.icon,
+    this.type,
+    this.status,
+    this.isOn,
+    this.deviceColor,
+    this.selectedColorIndex,
+    this.deviceSpeed,
+    this.deviceVolume,
+    this.isTimerSet,
+    this.onTime,
+    this.offTime,
+    this.brightness,
+    this.temperature,
+    this.humidity,
+    this.battery,
+    this.mode,
+    this.timeUsage,
+    this.energyUsage,
+    this.energyRate,
+    this.statics,
+  });
 
   DeviceModel.fromJson(Map<String, dynamic> json) {
     id = json["id"];

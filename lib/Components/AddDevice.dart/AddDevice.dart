@@ -4,13 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Components/IconSelector/IconSelector.dart';
 import 'package:smart_home/Conifg/AssestPaths.dart';
+import 'package:smart_home/Conifg/ToastMessages.dart';
 import 'package:smart_home/Controller/DeviceController.dart';
 import 'package:smart_home/Controller/RoomController.dart';
 import 'package:smart_home/Models/DeviceModel.dart';
 
 import '../PrimaryButton.dart';
 
-Future<dynamic> AddDevice(BuildContext context) {
+Future<dynamic> AddDevice(BuildContext context, String roomId) {
   List myIcons = [
     IconPaths.wifi,
     IconPaths.menu,
@@ -30,9 +31,81 @@ Future<dynamic> AddDevice(BuildContext context) {
     IconPaths.wifiLock,
   ];
   RxString selectedIcon = "".obs;
-  TextEditingController roomName = TextEditingController();
+  TextEditingController deviceName = TextEditingController();
   RoomController roomController = Get.put(RoomController());
   DeviceController deviceController = Get.put(DeviceController());
+  var deviceList = [
+    DropdownMenuItem(
+      value: "fan",
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            IconPaths.fan,
+            color: Theme.of(context).colorScheme.onBackground,
+            width: 20,
+          ),
+          SizedBox(width: 20),
+          Text("Fan"),
+        ],
+      ),
+    ),
+    DropdownMenuItem(
+      value: "speaker",
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            IconPaths.speaker,
+            color: Theme.of(context).colorScheme.onBackground,
+            width: 20,
+          ),
+          SizedBox(width: 20),
+          Text("Speaker"),
+        ],
+      ),
+    ),
+    DropdownMenuItem(
+      value: "light",
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            IconPaths.bulb,
+            color: Theme.of(context).colorScheme.onBackground,
+            width: 20,
+          ),
+          SizedBox(width: 20),
+          Text("Light"),
+        ],
+      ),
+    ),
+    // DropdownMenuItem(
+    //   value: "door",
+    //   child: Row(
+    //     children: [
+    //       SvgPicture.asset(
+    //         IconPaths.door,
+    //         color: Theme.of(context).colorScheme.onBackground,
+    //         width: 20,
+    //       ),
+    //       SizedBox(width: 20),
+    //       Text("door"),
+    //     ],
+    //   ),
+    // ),
+    // DropdownMenuItem(
+    //   value: "mic",
+    //   child: Row(
+    //     children: [
+    //       SvgPicture.asset(
+    //         IconPaths.mic,
+    //         color: Theme.of(context).colorScheme.onBackground,
+    //         width: 20,
+    //       ),
+    //       SizedBox(width: 20),
+    //       Text("mic"),
+    //     ],
+    //   ),
+    // ),
+  ];
   return Get.bottomSheet(Container(
     height: 400,
     padding: EdgeInsets.all(20),
@@ -98,7 +171,7 @@ Future<dynamic> AddDevice(BuildContext context) {
                   ),
                   const SizedBox(height: 10),
                   TextFormField(
-                    controller: roomName,
+                    controller: deviceName,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.home),
                       hintText: "Fan",
@@ -128,88 +201,7 @@ Future<dynamic> AddDevice(BuildContext context) {
                       child: DropdownButton2(
                         value: deviceController.selectedDeviceValue.value,
                         underline: SizedBox(),
-                        items: [
-                          DropdownMenuItem(
-                            value: "fan",
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
-                                  IconPaths.fan,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onBackground,
-                                  width: 20,
-                                ),
-                                SizedBox(width: 20),
-                                Text("fan"),
-                              ],
-                            ),
-                          ),
-                          DropdownMenuItem(
-                            value: "bulb",
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
-                                  IconPaths.bulb,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onBackground,
-                                  width: 20,
-                                ),
-                                SizedBox(width: 20),
-                                Text("bulb"),
-                              ],
-                            ),
-                          ),
-                          DropdownMenuItem(
-                            value: "door",
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
-                                  IconPaths.door,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onBackground,
-                                  width: 20,
-                                ),
-                                SizedBox(width: 20),
-                                Text("door"),
-                              ],
-                            ),
-                          ),
-                          DropdownMenuItem(
-                            value: "mic",
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
-                                  IconPaths.mic,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onBackground,
-                                  width: 20,
-                                ),
-                                SizedBox(width: 20),
-                                Text("mic"),
-                              ],
-                            ),
-                          ),
-                          DropdownMenuItem(
-                            value: "speaker",
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
-                                  IconPaths.speaker,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onBackground,
-                                  width: 20,
-                                ),
-                                SizedBox(width: 20),
-                                Text("Speaker"),
-                              ],
-                            ),
-                          ),
-                        ],
+                        items: deviceList,
                         onChanged: (value) {
                           deviceController.selectedDeviceValue.value = value!;
                         },
@@ -236,7 +228,18 @@ Future<dynamic> AddDevice(BuildContext context) {
                             color: Theme.of(context).colorScheme.primary,
                             btnName: "Done",
                             icon: Icons.done,
-                            ontap: () {},
+                            ontap: () {
+                              if (deviceName.text.isNotEmpty &&
+                                  selectedIcon.value.isNotEmpty) {
+                                deviceController.addDevice(
+                                  roomId,
+                                  deviceName.text,
+                                  selectedIcon.value,
+                                );
+                              } else {
+                                errorMessage("fill all fields");
+                              }
+                            },
                           ),
                   ),
                 ],

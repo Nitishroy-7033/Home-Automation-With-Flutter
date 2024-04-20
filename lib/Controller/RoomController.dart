@@ -7,6 +7,7 @@ import 'package:smart_home/Devices/CommingSoon/DeviceCommingShoon.dart';
 import 'package:smart_home/Devices/Fan/FanDevice.dart';
 import 'package:smart_home/Devices/LedBulb/LebBulb.dart';
 import 'package:smart_home/Conifg/AssestPaths.dart';
+import 'package:smart_home/Devices/Speaker/Speaker.dart';
 import 'package:smart_home/Models/RoomModel.dart';
 
 import '../Models/DeviceModel.dart';
@@ -93,18 +94,21 @@ class RoomController extends GetxController {
     isLoading.value = false;
   }
 
-  void deviceRouteMange(DeviceModel device) {
+  void deviceRouteMange(DeviceModel device, String roomId) {
     switch (device.type) {
       case "light":
-        Get.to(LedBulb(
-          deviceModel: device,
-        ));
+        Get.to(LedBulb(deviceModel: device, roomId: roomId));
         break;
       case "fan":
-        Get.to(FanDevice());
+        Get.to(FanDevice(deviceId: device.id!, roomId: roomId));
         break;
       case "bed":
         Get.to(AcDevice());
+      case "speaker":
+        Get.to(SpeakerDevice(
+          deviceId: device.id!,
+          roomId: roomId,
+        ));
       default:
         Get.to(DeviceCommingSoon());
     }

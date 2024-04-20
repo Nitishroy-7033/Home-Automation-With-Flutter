@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/Conifg/AssestPaths.dart';
+import 'package:smart_home/Controller/DeviceController.dart';
 
 class DeviceCard extends StatelessWidget {
   final String deviceName;
-  final RxBool isOn;
+  final bool isOn;
   final String icon;
   final VoidCallback onTap;
   final bool isWeb;
+  final String roomId;
+  final String deviceId;
   const DeviceCard({
     super.key,
     required this.deviceName,
@@ -16,10 +19,13 @@ class DeviceCard extends StatelessWidget {
     required this.onTap,
     required this.isOn,
     this.isWeb = false,
+    this.roomId = "",
+    this.deviceId = "",
   });
 
   @override
   Widget build(BuildContext context) {
+    DeviceController deviceController = Get.put(DeviceController());
     return InkWell(
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
@@ -38,58 +44,47 @@ class DeviceCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Obx(
-                  () => SvgPicture.asset(
-                    icon,
-                    width: 50,
-                    color: isOn.value
-                        ? Theme.of(context).colorScheme.onBackground
-                        : Theme.of(context).colorScheme.onPrimaryContainer,
-                  ),
-                )
+                SvgPicture.asset(
+                  icon,
+                  width: 50,
+                  color: isOn
+                      ? Theme.of(context).colorScheme.onBackground
+                      : Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
               ],
             ),
             SizedBox(height: 15),
             Row(
               children: [
-                Obx(
-                  () => Text(
-                    deviceName,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: isOn.value
-                              ? Theme.of(context).colorScheme.onBackground
-                              : Theme.of(context)
-                                  .colorScheme
-                                  .onPrimaryContainer,
-                        ),
-                  ),
-                )
+                Text(
+                  deviceName,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: isOn
+                            ? Theme.of(context).colorScheme.onBackground
+                            : Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                ),
               ],
             ),
             // SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Obx(
-                  () => Text(isOn.value ? "on" : "off",
-                      style: Theme.of(context).textTheme.labelLarge),
-                ),
+                Text(isOn ? "on" : "off",
+                    style: Theme.of(context).textTheme.labelLarge),
                 SizedBox(width: 10),
-                Obx(
-                  () => Switch(
-                    activeColor: Theme.of(context).colorScheme.primary,
-                    inactiveThumbColor: Theme.of(context).colorScheme.primary,
-                    inactiveTrackColor:
-                        Theme.of(context).colorScheme.background,
-                    trackOutlineWidth: MaterialStatePropertyAll(0),
-                    trackOutlineColor: MaterialStatePropertyAll(
-                      Theme.of(context).colorScheme.onSecondary,
-                    ),
-                    value: isOn.value,
-                    onChanged: (value) {
-                      isOn.value = value;
-                    },
+                Switch(
+                  activeColor: Theme.of(context).colorScheme.primary,
+                  inactiveThumbColor: Theme.of(context).colorScheme.primary,
+                  inactiveTrackColor: Theme.of(context).colorScheme.background,
+                  trackOutlineWidth: MaterialStatePropertyAll(0),
+                  trackOutlineColor: MaterialStatePropertyAll(
+                    Theme.of(context).colorScheme.onSecondary,
                   ),
+                  value: isOn,
+                  onChanged: (value) {
+                    deviceController.deviceOnOff(roomId, deviceId, value);
+                  },
                 ),
               ],
             )
