@@ -27,10 +27,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -44,37 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAhCmSyXArrai15W3y3AoswqC-e0KqeqTE',
-    appId: '1:221019381724:web:e7cf8eacf0ba7c79173919',
-    messagingSenderId: '221019381724',
-    projectId: 'smarthome-88cc3',
-    authDomain: 'smarthome-88cc3.firebaseapp.com',
-    storageBucket: 'smarthome-88cc3.appspot.com',
+    apiKey: 'AIzaSyBdyA8XUvuhxH5ASido38ju6r_HzxQvohI',
+    appId: '1:1006841524003:web:196c401b550de56d5ce696',
+    messagingSenderId: '1006841524003',
+    projectId: 'pkart-homeautomation',
+    authDomain: 'pkart-homeautomation.firebaseapp.com',
+    storageBucket: 'pkart-homeautomation.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDoi6Ro8QvA5e0q4g6QbsqJ7ZRw17LGFjA',
-    appId: '1:221019381724:android:d55ae13c65e5019c173919',
-    messagingSenderId: '221019381724',
-    projectId: 'smarthome-88cc3',
-    storageBucket: 'smarthome-88cc3.appspot.com',
+    apiKey: 'AIzaSyD74KWS7lhO0YJHSQZ7rWqvunriv687LUs',
+    appId: '1:1006841524003:android:a5e9605258693e925ce696',
+    messagingSenderId: '1006841524003',
+    projectId: 'pkart-homeautomation',
+    storageBucket: 'pkart-homeautomation.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAZVj7qcbnoMvU-slzOT1xHLbz2hDLtK6I',
-    appId: '1:221019381724:ios:0854ab16cc38ae35173919',
-    messagingSenderId: '221019381724',
-    projectId: 'smarthome-88cc3',
-    storageBucket: 'smarthome-88cc3.appspot.com',
+    apiKey: 'AIzaSyB-rHlBHEHY6eD90WUtiucGhaBnbR2Gbsc',
+    appId: '1:1006841524003:ios:5705f2090d81ffc75ce696',
+    messagingSenderId: '1006841524003',
+    projectId: 'pkart-homeautomation',
+    storageBucket: 'pkart-homeautomation.firebasestorage.app',
     iosBundleId: 'com.example.smartHome',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAZVj7qcbnoMvU-slzOT1xHLbz2hDLtK6I',
-    appId: '1:221019381724:ios:e7737d8b2c2bf4de173919',
-    messagingSenderId: '221019381724',
-    projectId: 'smarthome-88cc3',
-    storageBucket: 'smarthome-88cc3.appspot.com',
-    iosBundleId: 'com.example.smartHome.RunnerTests',
+    apiKey: 'AIzaSyB-rHlBHEHY6eD90WUtiucGhaBnbR2Gbsc',
+    appId: '1:1006841524003:ios:5705f2090d81ffc75ce696',
+    messagingSenderId: '1006841524003',
+    projectId: 'pkart-homeautomation',
+    storageBucket: 'pkart-homeautomation.firebasestorage.app',
+    iosBundleId: 'com.example.smartHome',
   );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyBdyA8XUvuhxH5ASido38ju6r_HzxQvohI',
+    appId: '1:1006841524003:web:be34dfe6661e504b5ce696',
+    messagingSenderId: '1006841524003',
+    projectId: 'pkart-homeautomation',
+    authDomain: 'pkart-homeautomation.firebaseapp.com',
+    storageBucket: 'pkart-homeautomation.firebasestorage.app',
+  );
+
 }
