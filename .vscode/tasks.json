@@ -1,0 +1,119 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "FVM: Flutter Run",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "run"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Build Debug APK",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "build", "apk", "--debug"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Build Release APK",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "build", "apk", "--release"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Run Tests",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "test"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Clean & Get Dependencies",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "clean"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": ["FVM: Get Dependencies"],
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Get Dependencies",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "pub", "get"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "FVM: Analyze Code",
+            "type": "shell",
+            "command": "fvm",
+            "args": ["flutter", "analyze"],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        }
+    ]
+}
